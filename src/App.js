@@ -1,24 +1,36 @@
-import logo from './logo.svg';
+// libraries
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route, Link} from 'react-router-dom'
+
+// style
 import './App.css';
+
+// page
+import AddingTaskPage from './Page/AddingTaskPage'
+import DeleteTaskPage from './Page/DeleteTaskPage'
+import UpdateTaskPage from './Page/UpdateTaskPage'
+import DeleteTaskCompPage from './Page/DeleteTaskCompPage'
+import ExercisePage from './Page/ExercisePage';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="navigation">
+        <Link to='/'>Create</Link>
+        <Link to='/delete'>Delete</Link>
+        <Link to='/update'>Update</Link>
+        <Link to='/deleteComp'>Delete Comp</Link>
+        <Link to='/crud'>Exercise</Link>
+      </div>
+
+      <Routes>
+        <Route path='/' exact element={<AddingTaskPage/>} />
+        <Route path='/delete' element={<DeleteTaskPage/>} />
+        <Route path='/update' element={<UpdateTaskPage/>} />
+        <Route path='/deleteComp' element={<DeleteTaskCompPage/>} />
+        <Route path='/crud' element={<ExercisePage/>} />
+      </Routes>
+    </Router>
   );
 }
 
